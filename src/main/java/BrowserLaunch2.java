@@ -1,31 +1,24 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BrowserLaunch2 {
 
-    WebDriver driver;
+    private WebDriver driver;
 
     public static void main(String[] args) {
         BrowserLaunch2 browserLaunch2 = new BrowserLaunch2();
-        browserLaunch2.launchBrowser("firefox");
-        browserLaunch2.wait5seconds();
+        browserLaunch2.launchBrowser();
+        browserLaunch2.waitFor5Seconds();
         browserLaunch2.quitBrowser();
     }
 
-    public void launchBrowser(String browserName) {
-        if (browserName.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-            driver = new ChromeDriver();
-        } else if (browserName.equalsIgnoreCase("firefox")) {
-            System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver");
-            driver = new FirefoxDriver();
-        }
-
+    public void launchBrowser() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        driver = new ChromeDriver();
         driver.get("https://www.amazon.com");
     }
 
-    public void wait5seconds() {
+    public void waitFor5Seconds() {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

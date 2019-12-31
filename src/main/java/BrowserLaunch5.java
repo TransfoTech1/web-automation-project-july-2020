@@ -7,21 +7,31 @@ public class BrowserLaunch5 {
 
     private static WebDriver driver;
 
+    // get the texts from all the header's of the amazon and store them in a arraylist
+
     public static void main(String[] args) {
         BrowserLaunch5 browserLaunch5 = new BrowserLaunch5();
         browserLaunch5.launchBrowser("chrome", "mac");
         browserLaunch5.waitFor(2);
         //browserLaunch5.searchForJavaBooksAndValidate();
         //browserLaunch5.loginToAmazon();
-        browserLaunch5.clickOnBestSeller();
+        //browserLaunch5.clickOnBestSeller();
+        browserLaunch5.validateOrders();
         browserLaunch5.waitFor(5);
         browserLaunch5.quitBrowser();
     }
 
+    public void validateOrders() {
+        String valueOrders = driver.findElement(By.id("nav-orders")).getText();
+        System.out.println(valueOrders);
+        String valuePrime = driver.findElement(By.id("nav-link-prime")).getText();
+        System.out.println(valuePrime);
+    }
+
     public void clickOnBestSeller() {
         //driver.findElement(By.xpath("//a[@href='/gp/bestsellers/?ref_=nav_cs_bestsellers']")).click();
-        driver.findElement(By.linkText("Amazon Rewards Visa Signature Cards"));
-
+        //driver.findElement(By.linkText("Manage Your Content and Devices")).click();
+        driver.findElement(By.partialLinkText("Manage Your Content")).click();
     }
 
     public void loginToAmazon() {

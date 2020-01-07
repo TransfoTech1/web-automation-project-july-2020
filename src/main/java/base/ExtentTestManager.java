@@ -4,7 +4,8 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -45,7 +46,7 @@ public class ExtentTestManager {
 
     //logging to report
     public static void log(String message, Class clas) {
-        Logger logger = Logger.getLogger(clas);
+        Logger logger = LogManager.getLogger(clas);
         logger.info(message);
         Reporter.log(message, true);
         ExtentTestManager.getTest().log(LogStatus.INFO, message + "<br>");

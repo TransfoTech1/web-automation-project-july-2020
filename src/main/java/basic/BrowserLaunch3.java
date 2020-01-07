@@ -1,44 +1,18 @@
-import org.openqa.selenium.By;
+package basic;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class BrowserLaunch4 {
+public class BrowserLaunch3 {
 
-    private static WebDriver driver;
+    private WebDriver driver;
 
     public static void main(String[] args) {
-        BrowserLaunch4 browserLaunch4 = new BrowserLaunch4();
-        browserLaunch4.launchBrowser("chrome", "mac");
-
-        //Locators :
-        //id, xpath, className, cssSelector, linkText, partialLinkText, name, tagName
-
-        //type
-        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Java Books");
-
-
-        //click
-        driver.findElement(By.xpath("//input[@value='Go']")).click();
-
-        //input[@value='Go']
-        // -- starts with double slash
-        // --tag name of that line
-        // [ --square bracket start
-        //@key='value'
-        // ] --square bracket end
-
-        browserLaunch4.waitFor(2);
-        boolean result = driver.findElement(By.xpath("//span[@class='a-color-state a-text-bold']")).isDisplayed();
-
-        if (result == true) {
-            System.out.println(result + " : element is displayed");
-        } else {
-            System.out.println(result + " : element is not displayed");
-        }
-
-        browserLaunch4.waitFor(5);
-        browserLaunch4.quitBrowser();
+        BrowserLaunch3 browserLaunch2 = new BrowserLaunch3();
+        browserLaunch2.launchBrowser("firefox", "mac");
+        browserLaunch2.waitFor5Seconds();
+        browserLaunch2.quitBrowser();
     }
 
     public void launchBrowser(String browserName, String os) {
@@ -64,9 +38,9 @@ public class BrowserLaunch4 {
         driver.get("https://www.amazon.com");
     }
 
-    public void waitFor(int seconds) {
+    public void waitFor5Seconds() {
         try {
-            Thread.sleep(seconds * 1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

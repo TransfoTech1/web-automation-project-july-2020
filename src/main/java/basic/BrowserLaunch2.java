@@ -1,22 +1,34 @@
+package basic;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class BrowserLaunch1 {
+public class BrowserLaunch2 {
+
+    private WebDriver driver;
 
     public static void main(String[] args) {
-        // IllegalStateException -- The path to the driver executable must be set by the webdriver.chrome.driver system property
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
+        BrowserLaunch2 browserLaunch2 = new BrowserLaunch2();
+        browserLaunch2.launchBrowser();
+        browserLaunch2.waitFor5Seconds();
+        browserLaunch2.quitBrowser();
+    }
 
-        //launch browser & goes to the url provided
+    public void launchBrowser() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        driver = new ChromeDriver();
         driver.get("https://www.amazon.com");
+    }
+
+    public void waitFor5Seconds() {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
 
-        //quites the browser
+    public void quitBrowser() {
         driver.quit();
     }
 

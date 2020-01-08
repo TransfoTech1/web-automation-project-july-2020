@@ -1,6 +1,6 @@
-package pages;
+package com.amazon.pages;
 
-import base.TestBase;
+import com.amazon.base.TestBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

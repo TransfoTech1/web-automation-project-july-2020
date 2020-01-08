@@ -1,4 +1,4 @@
-package base;
+package com.amazon.base;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;

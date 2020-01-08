@@ -1,4 +1,4 @@
-package base;
+package com.amazon.base;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
@@ -12,7 +12,7 @@ import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
 
-import static base.ExtentTestManager.*;
+import static com.amazon.base.ExtentTestManager.*;
 
 public class TestBase {
 

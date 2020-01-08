@@ -1,13 +1,13 @@
-package testcases;
+package com.amazon.testcases;
 
-import base.TestBase;
+import com.amazon.base.TestBase;
+import com.amazon.pages.FashionPage;
+import com.amazon.pages.Homepage;
+import com.amazon.pages.LoginPage;
+import com.amazon.pages.TodaysDealPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.FashionPage;
-import pages.Homepage;
-import pages.LoginPage;
-import pages.TodaysDealPage;
 
 public class RegressionTests extends TestBase {
 

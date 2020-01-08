@@ -1,6 +1,6 @@
-package testcases;
+package seleniumPractices;
 
-import base.TestBase;
+import com.amazon.base.TestBase;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 

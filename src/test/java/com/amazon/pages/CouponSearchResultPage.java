@@ -1,6 +1,6 @@
-package pages;
+package com.amazon.pages;
 
-import base.TestBase;
+import com.amazon.base.TestBase;
 
 public class CouponSearchResultPage extends TestBase {
 }

@@ -4,7 +4,7 @@ import base.TestBase;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-public class Tests extends TestBase {
+public class BasicTests extends TestBase {
 
     @Test
     public void validateOrders() {

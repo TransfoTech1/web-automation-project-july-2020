@@ -8,9 +8,8 @@
 
     <test name="Automation Tests">
         <classes>
-            <class name="testcases.Tests"/>
+            <class name="testcases.RegressionTests"/>
         </classes>
     </test>
-
 
 </suite>

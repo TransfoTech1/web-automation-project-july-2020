@@ -37,11 +37,28 @@ public class RegressionTests extends TestBase {
     }
 
 
-    @Test
+    @Test(enabled = false)
     public void userBeingAbleToseeDropDownAtFashionPagefromTodaysDeal() {
         homepage.clickOnTodaysDeal();
         todaysDealPage.clickOnFashion();
         fashionPage.validateFromDropDown();
         waitFor(5);
     }
+
+    @Test(enabled = false)
+    public void userBeingAbleToSeeThePrimeVideoUnderMenuButton() {
+        homepage.clickOnMenuButton();
+        homepage.validatePrimeVideo();
+        waitFor(5);
+    }
+
+
+    @Test
+    public void userBeingAbleToSeeAllMenuButton() {
+        homepage.clickOnMenuButton();
+        homepage.validateMenuOptions();
+        waitFor(5);
+    }
+
+
 }

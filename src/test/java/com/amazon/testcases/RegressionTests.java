@@ -1,6 +1,8 @@
 package com.amazon.testcases;
 
 import com.amazon.base.TestBase;
+import com.amazon.data.DataProviders;
+import com.amazon.keyword.Events;
 import com.amazon.pages.FashionPage;
 import com.amazon.pages.Homepage;
 import com.amazon.pages.LoginPage;
@@ -30,12 +32,6 @@ public class RegressionTests extends TestBase {
         homepage.clickOnTodaysDeal();
     }
 
-    @Test(enabled = false)
-    public void userBeingAbleToSignInAmazonUsingValidCredentials() {
-        homepage.clickOnSignInButton();
-        loginPage.fillUpEmailAndPassword();
-    }
-
 
     @Test(enabled = false)
     public void userBeingAbleToseeDropDownAtFashionPagefromTodaysDeal() {
@@ -53,12 +49,31 @@ public class RegressionTests extends TestBase {
     }
 
 
-    @Test
+    @Test(enabled = false)
     public void userBeingAbleToSeeAllMenuButton() {
         homepage.clickOnMenuButton();
         homepage.validateMenuOptions();
         waitFor(5);
     }
 
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "getDataForSearch", enabled = false)
+    public void userBeingAbleToSearchForDifferentItems(String data) {
+        homepage.fillSearchTypeBox(data);
+        waitFor(5);
+    }
+
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "getDataForLogin", enabled = false)
+    public void userBeingAbleToSignInAmazonUsingValidCredentials(String username, String password) {
+        homepage.clickOnSignInButton();
+        waitFor(5);
+        loginPage.fillUpEmailAndPassword(username, password);
+    }
+
+    @Test
+    public void keywordDrivenExamples() {
+        Events events = new Events();
+        events.funcTionEvents("login");
+        waitFor(5);
+    }
 
 }

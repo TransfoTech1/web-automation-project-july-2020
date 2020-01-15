@@ -1,6 +1,7 @@
 package com.amazon.pages;
 
 import com.amazon.base.TestBase;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
@@ -15,7 +16,7 @@ public class Homepage extends TestBase {
     @FindBy(linkText = "Today's Deals")
     private WebElement todaysDeal;
 
-    @FindBy(id = "nav-link-accountList")
+    @FindBy(xpath = "(//a[@data-nav-role='signin'])[1]")
     private WebElement signInBtn;
 
     @FindBy(id = "nav-hamburger-menu")
@@ -29,6 +30,9 @@ public class Homepage extends TestBase {
 
     @FindBy(xpath = "//a[@data-menu-id='4']")
     private WebElement echoNalexa;
+
+    @FindBy(id = "twotabsearchtextbox")
+    private WebElement searchBar;
 
     public void clickOnTodaysDeal() {
         //driver.findElement(By.linkText("Today's Deals")).click(); -- same as below line
@@ -66,6 +70,10 @@ public class Homepage extends TestBase {
         softAssert.assertEquals(echoNalexa.getText(), "Echo & Alxa");
 
         softAssert.assertAll();
+    }
+
+    public void fillSearchTypeBox(String searchableData) {
+        searchBar.sendKeys(searchableData, Keys.ENTER);
     }
 
 }

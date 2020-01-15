@@ -15,11 +15,11 @@ public class LoginPage extends TestBase {
     @FindBy(id = "ap_password")
     private WebElement passwordField;
 
-    public void fillUpEmailAndPassword() {
+    public void fillUpEmailAndPassword(String user, String pass) {
         // driver.findElement(By.id("whatever")).sendKeys("something@gmail.com");
-        emailField.sendKeys("testuser@gmail.com");
+        emailField.sendKeys(user);
         continueBtn.click();
-        passwordField.sendKeys("testuser12123");
+        passwordField.sendKeys(pass);
     }
 
 

@@ -70,10 +70,21 @@ public class RegressionTests extends TestBase {
     }
 
     @Test
-    public void keywordDrivenExamples() {
+    public void keywordDrivenExamplesLogin() {
         Events events = new Events();
         events.funcTionEvents("login");
         waitFor(5);
     }
+
+    @Test(enabled = false)
+    public void keywordDrivenExamplesLogout() {
+        Events events = new Events();
+        events.funcTionEvents("login");
+        events.funcTionEvents("validateUserLoggedIn");
+        events.funcTionEvents("logout");
+        events.funcTionEvents("validateUserLoggedOut");
+        waitFor(5);
+    }
+
 
 }

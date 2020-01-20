@@ -15,10 +15,7 @@ public class Quiz {
     // based on the text of the webElement matches to the expected text on params
 
     public boolean method2(WebElement element, String expectedText) {
-        if (element.getText().equalsIgnoreCase(expectedText)) {
-            return true;
-        } else
-            return false;
+        return element.getText().equalsIgnoreCase(expectedText);
     }
 
 

@@ -6,11 +6,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import static com.amazon.base.ExtentTestManager.*;
 
@@ -19,23 +23,34 @@ public class TestBase {
     public static WebDriver driver;
     private static ExtentReports extent;
 
-    @Parameters({"browserName", "os", "url"})
+    @Parameters({"browserName", "os", "url", "cloud"})
     @BeforeMethod
-    public void launchBrowser(String browserName, String os, String url) {
-        if (browserName.equalsIgnoreCase("chrome")) {
-            if (os.equalsIgnoreCase("mac")) {
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-            } else {
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+    public void launchBrowser(String browserName, String os, String url, boolean cloud) throws MalformedURLException {
+        if (cloud == false) {
+            if (browserName.equalsIgnoreCase("chrome")) {
+                if (os.equalsIgnoreCase("mac")) {
+                    System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+                } else {
+                    System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+                }
+                driver = new ChromeDriver();
+            } else if (browserName.equalsIgnoreCase("firefox")) {
+                if (os.equalsIgnoreCase("mac")) {
+                    System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver");
+                } else {
+                    System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
+                }
+                driver = new FirefoxDriver();
             }
-            driver = new ChromeDriver();
-        } else if (browserName.equalsIgnoreCase("firefox")) {
-            if (os.equalsIgnoreCase("mac")) {
-                System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver");
-            } else {
-                System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
-            }
-            driver = new FirefoxDriver();
+        } else {
+            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+            desiredCapabilities.setCapability("browser", "firefox");
+            desiredCapabilities.setCapability("browser_version", "71");
+            desiredCapabilities.setCapability("os", "windows");
+            desiredCapabilities.setCapability("os_version", "7");
+            desiredCapabilities.setCapability("name", "Cloud Execution Transfotech");
+            driver = new RemoteWebDriver(
+                    new URL("http://zan14:Fs7PJAifzJnzs8dFMNxx@hub-cloud.browserstack.com/wd/hub"), desiredCapabilities);
         }
         driver.get(url);
     }

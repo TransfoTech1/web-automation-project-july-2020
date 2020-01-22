@@ -26,6 +26,7 @@ public class ConnectDB {
         }
 
         // how to add these id and name in 2 lists -- home work
+        // try using 1 map of 2 lists
 
         statement.close();
         connection.close();
